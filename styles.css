@@ -1,0 +1,51 @@
+body {
+  background: #a81802;
+  color: #020bf7;
+  font-family: JunicodeItalic;
+}
+
+.content {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  font-size: 2em;
+  font-family: JunicodeBold;
+}
+
+@font-face {
+  font-family: 'Junicode';
+  src: url('fonts/junicode-webfont.woff2') format('woff2'),
+    url('fonts/junicode-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JunicodeItalic';
+  src: url('fonts/junicode-italic-webfont.woff2') format('woff2'),
+    url('fonts/junicode-italic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JunicodeBold';
+  src: url('fonts/junicode-bold-webfont.woff2') format('woff2'),
+    url('fonts/junicode-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JunicodeBoldItalic';
+  src: url('fonts/junicode-bolditalic-webfont.woff2') format('woff2'),
+    url('fonts/junicode-bolditalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
