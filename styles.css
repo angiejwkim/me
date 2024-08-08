@@ -1,14 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Junicode;
+  font-style: normal;
+}
+
 body {
   background: #a81802;
   color: #020bf7;
-  font-family: JunicodeItalic;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.content {
+.circle {
+  position: relative;
+  height: min(25vh, 25vw);
+  width: min(25vh, 25vw);
+  border-radius: 50%;
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -16,13 +28,33 @@ body {
 .header {
   font-size: 2em;
   font-family: JunicodeBold;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circleText {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: rotateText 5s linear infinite;
+}
+
+.circleText span {
+  position: absolute;
+  left: 50%;
+  transform-origin: 0 min(12.5vh, 12.5vw);
+}
+
+@keyframes rotateText {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @font-face {
   font-family: 'Junicode';
   src: url('fonts/junicode-webfont.woff2') format('woff2'),
     url('fonts/junicode-webfont.woff') format('woff');
-  font-weight: normal;
   font-style: normal;
 }
 
@@ -30,22 +62,19 @@ body {
   font-family: 'JunicodeItalic';
   src: url('fonts/junicode-italic-webfont.woff2') format('woff2'),
     url('fonts/junicode-italic-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-style: italic;
 }
 
 @font-face {
   font-family: 'JunicodeBold';
   src: url('fonts/junicode-bold-webfont.woff2') format('woff2'),
     url('fonts/junicode-bold-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-style: bold;
 }
 
 @font-face {
   font-family: 'JunicodeBoldItalic';
   src: url('fonts/junicode-bolditalic-webfont.woff2') format('woff2'),
     url('fonts/junicode-bolditalic-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-style: bold, italic;
 }
