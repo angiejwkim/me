@@ -17,8 +17,8 @@ body {
 
 .circle {
   position: relative;
-  height: min(25vh, 25vw);
-  width: min(25vh, 25vw);
+  height: 30vh;
+  width: 30vh;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -26,7 +26,7 @@ body {
 }
 
 .header {
-  font-size: 3vw;
+  font-size: 3em;
   text-align: center;
   font-family: JunicodeBold;
   position: absolute;
@@ -34,7 +34,6 @@ body {
 }
 
 .circleText {
-  font-size: 1.5vw;
   text-align: center;
   position: absolute;
   height: 100%;
@@ -45,7 +44,7 @@ body {
 .circleText span {
   position: absolute;
   left: 50%;
-  transform-origin: 0 min(12.5vh, 12.5vw);
+  transform-origin: 0 15vh;
 }
 
 @keyframes rotateText {
