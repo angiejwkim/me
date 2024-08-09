@@ -7,7 +7,7 @@
 
 body {
   background: #a81802;
-  color: #020bf7;
+  color: #1813a8;
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
@@ -26,13 +26,16 @@ body {
 }
 
 .header {
-  font-size: 2em;
+  font-size: 3vw;
+  text-align: center;
   font-family: JunicodeBold;
   position: absolute;
   border-radius: 50%;
 }
 
 .circleText {
+  font-size: 1.5vw;
+  text-align: center;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -48,6 +51,24 @@ body {
 @keyframes rotateText {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    font-size: 10vw;
+  }
+  .circle {
+    height: 80vw;
+    width: 80vw;
+  }
+  .circleText {
+    font-size: 5vw;
+  }
+  .circleText span {
+    position: absolute;
+    left: 50%;
+    transform-origin: 0 min(40vh, 40vw);
   }
 }
 
