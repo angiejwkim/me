@@ -6,13 +6,19 @@
 }
 
 body {
-  background: #a81802;
-  color: #1813a8;
-  min-height: 100vh;
-  min-width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.screen {
+  color: #1813a8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #a81802;
+  position: absolute;
+  z-index: 100;
 }
 
 .circle {
@@ -26,7 +32,7 @@ body {
 }
 
 .header {
-  font-size: 3em;
+  font-size: 2.5em;
   text-align: center;
   font-family: JunicodeBold;
   position: absolute;
@@ -61,13 +67,10 @@ body {
     height: 80vw;
     width: 80vw;
   }
-  .circleText {
-    font-size: 5vw;
-  }
   .circleText span {
     position: absolute;
     left: 50%;
-    transform-origin: 0 min(40vh, 40vw);
+    transform-origin: 0 40vw;
   }
 }
 
