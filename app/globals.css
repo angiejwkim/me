@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Junicode, sans-serif;
+  font-style: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: #a20000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #90b3ff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.header {
+  text-decoration: underline;
+  font-size: 4em;
+  text-align: center;
+  font-family: Junicode, sans-serif;
+  position: relative;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: auto;
+  display: inline-block;
+}
+
+@font-face {
+  font-family: 'Junicode';
+  src:
+    url('/fonts/junicode-webfont.woff2') format('woff2'),
+    url('/fonts/junicode-webfont.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JunicodeItalic';
+  src:
+    url('/fonts/junicode-italic-webfont.woff2') format('woff2'),
+    url('/fonts/junicode-italic-webfont.woff') format('woff');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'JunicodeBold';
+  src:
+    url('/fonts/junicode-bold-webfont.woff2') format('woff2'),
+    url('/fonts/junicode-bold-webfont.woff') format('woff');
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'JunicodeBoldItalic';
+  src:
+    url('/fonts/junicode-bolditalic-webfont.woff2') format('woff2'),
+    url('/fonts/junicode-bolditalic-webfont.woff') format('woff');
+  font-style: bold, italic;
+}
+
+/* Add styles for content pages */
+.content-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Add styles for gallery pages */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.hovercard {
+  font-size: 2em;
+  /* border: 2px solid #a20000; */
+  color: #90b3ff;
+  background-color: #a20000;
+  padding: 8px;
+  pointer-events: none;
+  transform: translate(0, -100%);
+  /* margin-top: -8px; */
+  opacity: 1;
+  z-index: 100;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
