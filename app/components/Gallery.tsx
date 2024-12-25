@@ -1,9 +1,9 @@
-import { GalleryPage } from '@/types/sanity';
+import type { Gallery } from '@/types/sanity';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 
 interface Props {
-  page: GalleryPage;
+  page: Gallery;
 }
 
 export default function Gallery({ page }: Props) {

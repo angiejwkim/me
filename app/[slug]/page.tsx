@@ -1,20 +1,41 @@
 import { client } from '@/sanity/lib/client';
-import { groq } from 'next-sanity';
-import Gallery from '@/components/Gallery';
-import Text from '@/components/Text';
 
-export default async function Page({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const query = groq`*[slug.current == $slug][0]`;
-  const page = await client.fetch(query, { slug: params.slug });
-  if (page._type === 'textPage') {
-    return <Text page={page} />;
-  } else if (page._type === 'galleryPage') {
-    return <Gallery page={page} />;
-  } else {
-    return <>No page found</>;
+import TextPage from '@/components/Text';
+import GalleryPage from '@/components/Gallery';
+import Header from '@/components/Header';
+
+import { getPageBySlug } from '@/sanity/lib/client';
+import { notFound } from 'next/navigation';
+
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export default async function PostPage(props: PageProps) {
+  const params = await props.params;
+  const post = await getPageBySlug(params.slug);
+
+  if (!post) {
+    notFound();
   }
+
+  console.log(post);
+
+  if (post._type === 'textPage') {
+    return <TextPage page={post} />;
+  } else if (post._type === 'gallery') {
+    return <GalleryPage page={post} />;
+  } else {
+    return notFound();
+  }
+}
+
+// Add generateStaticParams if you want to statically generate pages
+export async function generateStaticParams() {
+  const posts = await client.fetch(`*[_type == "post"]{ slug }`);
+  return posts.map((post: any) => ({
+    slug: post.slug.current,
+  }));
 }

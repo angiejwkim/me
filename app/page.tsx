@@ -13,16 +13,11 @@ export default function Home() {
     useState<HovercardPosition>({ x: 0, y: 0 });
   const [pairs, setPairs] = useState<string[][]>([]);
   const [randomPair, setRandomPair] = useState<string[]>([]);
-  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
     fetch('/api/notion')
       .then((res) => res.json())
-      .then(setPairs)
-      .catch((_) => {
-        setOffline(true);
-        console.error('JSON parse error');
-      });
+      .then(setPairs);
   }, []);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -69,7 +64,6 @@ export default function Home() {
         >
           angie kim
         </a>
-        {offline && <div>is offline</div>}
       </div>
       {showHovercard && randomPair && (
         <div
