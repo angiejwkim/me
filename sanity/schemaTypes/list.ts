@@ -1,15 +1,15 @@
 import { commonFields } from './common';
 
 export default {
-  name: 'textPage',
-  title: 'Text Page',
+  name: 'list',
+  title: 'List',
   type: 'document',
   fields: [...commonFields,
     {
-      name: 'content',
-      title: 'Content',
+      name: 'items',
+      title: 'Items',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [{ type: 'string' }],
     },
   ],
 };

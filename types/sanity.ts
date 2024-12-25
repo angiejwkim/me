@@ -1,21 +1,19 @@
-export interface TextPage {
+export interface Text {
   title: string;
   content: any[]; // Sanity block content type
 }
 
-export interface GalleryPage {
+export interface Gallery {
   title: string;
   images: any[]; // Sanity image type
 }
 
 export interface Post {
   _id: string;
-  _type: 'post';
+  _type: string;
   title: string;
   slug: {
     current: string;
   };
-  content: any; // Define more specifically based on your content structure
-  mainImage?: string;
-  publishedAt: string;
+  popup: string;
 }
