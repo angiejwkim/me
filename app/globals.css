@@ -5,17 +5,17 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Junicode, sans-serif;
+  font-family: OverusedGrotesk, sans-serif;
   font-style: normal;
 }
 
 body {
   min-height: 100vh;
-  color: #a20000;
+  /* color: #a20000; */
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #90b3ff;
+  /* background: #90b3ff; */
   position: fixed;
   top: 0;
   left: 0;
@@ -69,6 +69,18 @@ body {
   font-style: bold, italic;
 }
 
+@font-face {
+  font-family: 'OverusedGrotesk';
+  src: url('/fonts/OverusedGrotesk-Book.woff') format('woff');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OverusedGroteskMedium';
+  src: url('/fonts/OverusedGrotesk-Medium.woff') format('woff');
+  font-style: normal;
+}
+
 /* Add styles for content pages */
 .content-page {
   max-width: 800px;
@@ -103,12 +115,11 @@ body {
 
 .hovercard {
   font-size: 2em;
-  color: #90b3ff;
-  background-color: #a20000;
+  background-color: rgba(252, 0, 0, 0.75);
+  border: 0.1em solid black;
   padding: 0.2em 0.75em 0.2em 0.75em;
   pointer-events: none;
   transform: translate(0, -100%);
-  opacity: 1;
   z-index: 100;
   border-radius: 999px;
 }
