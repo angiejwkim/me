@@ -11,11 +11,9 @@
 
 body {
   min-height: 100vh;
-  /* color: #a20000; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: #90b3ff; */
   position: fixed;
   top: 0;
   left: 0;
@@ -28,7 +26,7 @@ body {
   text-decoration: underline;
   font-size: 6em;
   text-align: center;
-  font-family: Junicode, sans-serif;
+  font-family: OverusedGrotesk, sans-serif;
   position: relative;
   border-radius: 50%;
   cursor: pointer;
@@ -38,57 +36,17 @@ body {
 }
 
 @font-face {
-  font-family: 'Junicode';
-  src:
-    url('/fonts/junicode-webfont.woff2') format('woff2'),
-    url('/fonts/junicode-webfont.woff') format('woff');
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'JunicodeItalic';
-  src:
-    url('/fonts/junicode-italic-webfont.woff2') format('woff2'),
-    url('/fonts/junicode-italic-webfont.woff') format('woff');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'JunicodeBold';
-  src:
-    url('/fonts/junicode-bold-webfont.woff2') format('woff2'),
-    url('/fonts/junicode-bold-webfont.woff') format('woff');
-  font-style: bold;
-}
-
-@font-face {
-  font-family: 'JunicodeBoldItalic';
-  src:
-    url('/fonts/junicode-bolditalic-webfont.woff2') format('woff2'),
-    url('/fonts/junicode-bolditalic-webfont.woff') format('woff');
-  font-style: bold, italic;
-}
-
-@font-face {
   font-family: 'OverusedGrotesk';
   src: url('/fonts/OverusedGrotesk-Book.woff') format('woff');
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'OverusedGroteskMedium';
-  src: url('/fonts/OverusedGrotesk-Medium.woff') format('woff');
-  font-style: normal;
-}
-
-/* Add styles for content pages */
 .content-page {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* Add styles for gallery pages */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
