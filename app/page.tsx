@@ -1,5 +1,8 @@
 'use client';
 
+import { getAllTargets } from '@/sanity/lib/client';
+import { targetTypes } from '@/sanity/schemaTypes/target';
+import { Target } from '@/types/sanity';
 import React, { useEffect, useState } from 'react';
 
 interface HovercardPosition {
@@ -7,23 +10,38 @@ interface HovercardPosition {
   y: number;
 }
 
+function getTargetValue(target: Target): string | undefined {
+  switch (target.targetType) {
+    case targetTypes.PAGE:
+      return target.slug;
+    case targetTypes.URL:
+      return target.externalUrl;
+    case targetTypes.SECONDARY_HOVER:
+      return target.secondaryHover;
+  }
+}
+
 export default function Home() {
   const [showHovercard, setShowHovercard] = useState(false);
   const [hovercardPosition, setHovercardPosition] =
     useState<HovercardPosition>({ x: 0, y: 0 });
-  const [pairs, setPairs] = useState<string[][]>([]);
-  const [randomPair, setRandomPair] = useState<string[]>([]);
+  const [targets, setTargets] = useState<Target[]>([]);
+  const [index, setIndex] = useState(0);
+  const [currentTarget, setCurrentTarget] = useState<Target>();
 
   useEffect(() => {
-    fetch('/api/notion')
-      .then((res) => res.json())
-      .then(setPairs);
+    getAllTargets().then(setTargets);
   }, []);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (pairs.length > 0) {
-      const randomIndex = Math.floor(Math.random() * pairs.length);
-      setRandomPair(pairs[randomIndex]);
+    if (targets.length > 0) {
+      const prevIndex = index;
+      let newIndex = prevIndex;
+      while (newIndex === prevIndex) {
+        newIndex = Math.floor(Math.random() * targets.length);
+      }
+      setIndex(newIndex);
+      setCurrentTarget(targets[newIndex]);
       setShowHovercard(true);
       updateHovercardPosition(e);
     }
@@ -42,7 +60,6 @@ export default function Home() {
   const updateHovercardPosition = (
     e: React.MouseEvent<HTMLDivElement>
   ) => {
-    const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX;
     const y = e.clientY;
     setHovercardPosition({ x, y });
@@ -57,7 +74,7 @@ export default function Home() {
         onMouseLeave={handleMouseLeave}
       >
         <a
-          href={randomPair[1]}
+          href={currentTarget ? getTargetValue(currentTarget) : '#'}
           target="_blank"
           rel="noopener noreferrer"
           className="name-link"
@@ -65,7 +82,7 @@ export default function Home() {
           angie kim
         </a>
       </div>
-      {showHovercard && randomPair && (
+      {showHovercard && currentTarget && (
         <div
           className="hovercard"
           style={{
@@ -74,7 +91,7 @@ export default function Home() {
             top: `${hovercardPosition.y}px`,
           }}
         >
-          {randomPair[0]}
+          {currentTarget.hover}
         </div>
       )}
     </main>

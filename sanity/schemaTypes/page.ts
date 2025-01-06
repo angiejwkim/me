@@ -1,9 +1,10 @@
 import { Rule } from '@sanity/types';
 
-const pageTypes = {
+export const pageTypes = {
   TEXT: 'text',
   GALLERY: 'gallery',
-};
+  LIST: 'list',
+} as const;
 
 export default {
   name: 'page',
@@ -55,6 +56,14 @@ export default {
           of: [{ type: 'image' }],
           hidden: ({ document }: { document: any }) =>
             document?.pageType !== pageTypes.GALLERY,
+        },
+        {
+          name: 'list',
+          title: 'List',
+          type: 'array',
+          of: [{ type: 'string' }],
+          hidden: ({ document }: { document: any }) =>
+            document?.pageType !== pageTypes.LIST,
         },
       ],
     },

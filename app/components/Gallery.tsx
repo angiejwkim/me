@@ -1,23 +1,28 @@
-import type { Gallery } from '@/types/sanity';
 import { urlFor } from '@/sanity/lib/image';
+import { GalleryPage } from '@/types/sanity';
 import Image from 'next/image';
 
 interface Props {
-  page: Gallery;
+  page: GalleryPage;
 }
 
-export default function Gallery({ page }: Props) {
+export default function GalleryComponent({ page }: Props) {
+  if (!page?.content || !Array.isArray(page.content)) {
+    console.warn('Invalid or missing content array');
+    return null;
+  }
+
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-8">{page.title}</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {page.images.map((image, index) => (
-          <div key={index} className="aspect-square relative">
+    <div className="absolute inset-x-0 top-24 min-h-screen pb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        {page.content.map((item, index) => (
+          <div key={index} className="relative aspect-square w-full">
             <Image
-              src={urlFor(image).url()}
+              src={urlFor(item).url()}
               alt={`Gallery image ${index + 1}`}
               fill
-              className="object-cover"
+              className="object-cover tansition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
         ))}

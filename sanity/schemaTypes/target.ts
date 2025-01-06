@@ -1,10 +1,10 @@
 import { Rule } from '@sanity/types';
 
-const targetTypes = {
+export const targetTypes = {
   PAGE: 'page',
   URL: 'url',
   SECONDARY_HOVER: 'secondary',
-};
+} as const;
 
 export default {
   name: 'target',

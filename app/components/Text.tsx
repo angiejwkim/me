@@ -1,11 +1,11 @@
-import type { Text } from '@/types/sanity';
+import type { TextPage } from '@/types/sanity';
 import { PortableText } from '@portabletext/react';
 
 interface Props {
-  page: Text;
+  page: TextPage;
 }
 
-export default function Text({ page }: Props) {
+export default function TextComponent({ page }: Props) {
   return (
     <article className="max-w-3xl mx-auto">
       <div className="prose prose-lg">
