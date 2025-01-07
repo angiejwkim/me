@@ -1,13 +1,13 @@
 import Header from '../components/Header';
 
-export default function Layout({
+export default async function Layout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   return (
     <div className="min-h-screen">
       <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 py-6">
