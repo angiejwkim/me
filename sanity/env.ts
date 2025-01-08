@@ -10,12 +10,19 @@ export const projectId = assertValue(
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'
 );
-export const apiKey = assertValue(
-  process.env.NODE_ENV === 'production'
-    ? process.env.SANITY_API_READ_TOKEN
-    : process.env.NEXT_PUBLIC_SANITY_STUDIO_API_TOKEN,
-  'Missing environment variable: NEXT_PUBLIC_SANITY_STUDIO_API_TOKEN or SANITY_API_READ_TOKEN'
-);
+
+let apiKey: string;
+if (process.env.NODE_ENV === 'production') {
+  apiKey = assertValue(
+    process.env.SANITY_API_READ_TOKEN,
+    'Missing environment variable: SANITY_API_READ_TOKEN'
+  );
+} else {
+  apiKey = assertValue(
+    process.env.NEXT_PUBLIC_SANITY_STUDIO_API_TOKEN,
+    'Missing environment variable: NEXT_PUBLIC_SANITY_STUDIO_API_TOKEN'
+  );
+}
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
   if (v === undefined) {
@@ -24,3 +31,5 @@ function assertValue<T>(v: T | undefined, errorMessage: string): T {
 
   return v;
 }
+
+export const sanityApiKey = apiKey;

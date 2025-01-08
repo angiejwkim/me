@@ -1,5 +1,5 @@
 import { createClient } from 'next-sanity';
-import { apiVersion, dataset, projectId, apiKey } from '../env';
+import { apiVersion, dataset, projectId, sanityApiKey } from '../env';
 import { Page, Target } from '@/types/sanity';
 
 export const client = createClient({
@@ -7,7 +7,7 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn: false,
-  token: apiKey,
+  token: sanityApiKey,
   perspective: 'published',
 });
 
