@@ -22,7 +22,6 @@ export default async function PostPage(props: PageProps) {
     notFound();
   }
 
-  console.log(post);
   if (post.pageType === pageTypes.TEXT) {
     return <TextComponent page={post as TextPage} />;
   } else if (post.pageType === pageTypes.GALLERY) {

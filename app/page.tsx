@@ -1,6 +1,5 @@
 'use client';
 
-import { getAllTargets } from '@/sanity/lib/client';
 import { targetTypes } from '@/sanity/schemaTypes/target';
 import { Target } from '@/types/sanity';
 import React, { useEffect, useState } from 'react';
@@ -30,7 +29,9 @@ export default function Home() {
   const [currentTarget, setCurrentTarget] = useState<Target>();
 
   useEffect(() => {
-    getAllTargets().then(setTargets);
+    fetch('/api/targets')
+      .then((res) => res.json())
+      .then(setTargets);
   }, []);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
