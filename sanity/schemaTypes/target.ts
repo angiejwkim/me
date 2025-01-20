@@ -52,7 +52,9 @@ export default {
       hidden: ({ document }: { document: any }) =>
         document?.targetType !== targetTypes.URL,
       validation: (Rule: Rule) =>
-        Rule.custom((field: any, context: any) => {
+        Rule.uri({
+          scheme: ['http', 'https', 'mailto'],
+        }).custom((field: any, context: any) => {
           if (
             context.document?.targetType === targetTypes.URL &&
             !field
