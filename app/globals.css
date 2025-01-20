@@ -73,13 +73,14 @@ body {
 
 .hovercard {
   font-size: 2em;
-  background-color: rgba(252, 0, 0, 0.75);
+  background-color: rgba(50, 205, 50, 0.75);
   border: 0.1em solid black;
   padding: 0.2em 0.75em 0.2em 0.75em;
   pointer-events: none;
   transform: translate(0, -100%);
   z-index: 100;
   border-radius: 999px;
+  width: max-content;
 }
 
 a,

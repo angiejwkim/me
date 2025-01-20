@@ -1,6 +1,5 @@
-import TextComponent from '@/components/Text';
-import GalleryComponent from '@/components/Gallery';
-import Header from '@/components/Header';
+import TextComponent from '@/app/components/pages/Text';
+import GalleryComponent from '@/app/components/pages/Gallery';
 
 import { pageTypes } from '@/sanity/schemaTypes/page';
 import { TextPage, GalleryPage, ListPage } from '@/types/sanity';
